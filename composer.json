@@ -13,7 +13,7 @@
     "aydin-hassan/magento-core-composer-installer": "*",
     "colinmollenhour/modman": "*",
     "theseer/autoload": "*",
-    "magento/core": "^1.9"
+    "magento/core": "1.9.2.2"
   },
   "require-dev": {
     "aoepeople/aoe_profiler": "v0.3.0",
