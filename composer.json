@@ -13,8 +13,8 @@
     "aydin-hassan/magento-core-composer-installer": "*",
     "colinmollenhour/modman": "*",
     "theseer/autoload": "*",
-    "magento/core": "1.9.2.2",
-    "communicator/magento-plugin": "*"
+    "magento/core": "1.9.2.4",
+    "communicator/magento-plugin": "master"
   },
   "require-dev": {
     "aoepeople/aoe_profiler": "v0.3.0",
