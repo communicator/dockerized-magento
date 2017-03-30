@@ -67,7 +67,7 @@ mysql:
   volumes:
     - ./data/mysql:/var/lib/mysql
 solr:
-  image: andreaskoch/dockerized-magento/docker-images/solr
+  image: andreaskoch/dockerized-magento-solr
 cache:
   image: redis:latest
 fullpagecache:
