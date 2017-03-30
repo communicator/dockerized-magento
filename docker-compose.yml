@@ -67,7 +67,7 @@ mysql:
   volumes:
     - ./data/mysql:/var/lib/mysql
 solr:
-  image: build: ./docker-images/solr
+  build: ./docker-images/solr
 cache:
   image: redis:latest
 fullpagecache:
