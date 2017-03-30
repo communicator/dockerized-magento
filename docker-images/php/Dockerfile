@@ -20,8 +20,7 @@ RUN buildDeps=" \
     mysql \
     pdo_mysql \
     soap \
-    zip \
-"
+    zip
 
 # Install xdebug
 RUN apt-get update -qy && apt-get install -qy git-core \
