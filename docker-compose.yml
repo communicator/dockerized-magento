@@ -32,7 +32,7 @@ installer:
   entrypoint: /bin/install.sh
 
 nginx:
-  image: andreaskoch/dockerized-magento-nginx
+  image: nginx:latest
   ports:
     - "80:80"
     - "443:443"
