@@ -1,5 +1,5 @@
 installer:
-  image: andreaskoch/dockerized-magento-installer
+  build: ./docker-images/installer
   environment:
     DOMAIN: magento-04f36ui3.cloudapp.net
     MAGENTO_ROOT: /var/www/html/web
@@ -32,7 +32,7 @@ installer:
   entrypoint: /bin/install.sh
 
 nginx:
-  image: nginx:latest
+  build: ./docker-images/nginx
   ports:
     - "80:80"
     - "443:443"
@@ -49,7 +49,7 @@ nginx:
   volumes_from:
     - php
 php:
-  image: andreaskoch/dockerized-magento-php
+  build: ./docker-images/php
   links:
     - "cache:rediscache"
     - "sessions:redissession"
@@ -67,7 +67,7 @@ mysql:
   volumes:
     - ./data/mysql:/var/lib/mysql
 solr:
-  image: andreaskoch/dockerized-magento-solr
+  image: build: ./docker-images/solr
 cache:
   image: redis:latest
 fullpagecache:
