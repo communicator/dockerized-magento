@@ -1,6 +1,6 @@
 FROM php:5.6-fpm
 
-# Install
+# Install dependencies
 RUN buildDeps=" \
         libpng12-dev \
         libjpeg-dev \
@@ -21,7 +21,10 @@ RUN buildDeps=" \
     pdo_mysql \
     soap \
     zip \
-    && apt-get update -qy && apt-get install -qy git-core \
+"
+
+# Install xdebug
+RUN apt-get update -qy && apt-get install -qy git-core \
     && cd /tmp/ && git clone https://github.com/derickr/xdebug.git \
     && cd xdebug && phpize && ./configure --enable-xdebug && make \
     && mkdir /usr/lib/php5/ && cp modules/xdebug.so /usr/lib/php5/xdebug.so \
@@ -49,6 +52,7 @@ RUN curl -o magerun https://raw.githubusercontent.com/netz98/n98-magerun/master/
 RUN apt-get update && \
     apt-get install -qy cron
 
+# Copy default crontab file
 COPY magento-crontab /etc/magento-crontab
 
 RUN crontab /etc/magento-crontab
