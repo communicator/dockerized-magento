@@ -14,7 +14,7 @@
     "colinmollenhour/modman": "*",
     "theseer/autoload": "*",
     "magento/core": "1.9.2.4",
-    "communicator/magento-plugin": "master"
+    "communicator/magento-plugin": "^1"
   },
   "require-dev": {
     "aoepeople/aoe_profiler": "v0.3.0",
