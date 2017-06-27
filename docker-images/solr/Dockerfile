@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:jessie
 
 # Install Solr
 RUN apt-get update -qy && \
