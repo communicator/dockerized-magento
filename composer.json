@@ -24,10 +24,6 @@
     {
       "type": "composer",
       "url": "https://packages.firegento.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/communicator/magento-plugin"
     }
   ],
   "extra": {
@@ -38,11 +34,5 @@
     "discard-changes": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "post-install-cmd": [
-    ],
-    "post-update-cmd": [
-    ]
-  }
+  "prefer-stable": true
 }
