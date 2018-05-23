@@ -56,7 +56,9 @@ Thanks to [René Penner](https://github.com/renepenner/magento-docker-boilerplat
 
 ### For Windows Users
 
-I suppose it will work on Windows, but I have not tested it. And I suspect that the performance will not be great due to the slow file-sharing protocol between the Windows hosts and the VirtualBox VM.
+1. Run `dos2unix config/installer/bin/*` to fix any line ending issues between the Windows and Docker containers caused on `git checkout`.
+2. Open up a `Git Bash` instance
+3. Start the projects using `./magento start` or `docker-compose up`
 
 ## Installation
 
