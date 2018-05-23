@@ -11,7 +11,7 @@ set -e
 #####################################
 function updateMagento() {
 	cd /var/www/html
-	composer update
+	composer update --ignore-platform-reqs
 }
 
 #####################################
