@@ -1,7 +1,7 @@
 installer:
   image: andreaskoch/dockerized-magento-installer
   environment:
-    DOMAIN: dockerized-magento.local
+    DOMAIN: magento-04f36ui3.cloudapp.net
     MAGENTO_ROOT: /var/www/html/web
     MYSQL_HOST: mysql
     MYSQL_DATABASE: magento
