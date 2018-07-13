@@ -13,8 +13,8 @@
     "aydin-hassan/magento-core-composer-installer": "*",
     "colinmollenhour/modman": "*",
     "theseer/autoload": "*",
-    "magento/core": "1.9.2.2",
-    "communicator/magento-plugin": "*"
+    "magento/core": "1.9.2.4",
+    "communicator/magento-plugin": "^1"
   },
   "require-dev": {
     "aoepeople/aoe_profiler": "v0.3.0",
@@ -24,10 +24,6 @@
     {
       "type": "composer",
       "url": "https://packages.firegento.com"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/communicator/magento-plugin"
     }
   ],
   "extra": {
@@ -38,11 +34,5 @@
     "discard-changes": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "post-install-cmd": [
-    ],
-    "post-update-cmd": [
-    ]
-  }
+  "prefer-stable": true
 }

@@ -1,5 +1,5 @@
 installer:
-  image: andreaskoch/dockerized-magento-installer
+  build: docker-images/installer
   environment:
     DOMAIN: magento.communicatorlocal.com
     MAGENTO_ROOT: /var/www/html/web
@@ -34,8 +34,8 @@ installer:
 nginx:
   image: nginx:latest
   ports:
-    - "80:80"
-    - "443:443"
+    - "8100:80"
+    - "4433:443"
   links:
     - "php"
   volumes:
@@ -48,8 +48,9 @@ nginx:
     - ./config/nginx/custom-locations:/etc/nginx/custom-locations
   volumes_from:
     - php
+
 php:
-  image: andreaskoch/dockerized-magento-php
+  build: ./docker-images/php
   links:
     - "cache:rediscache"
     - "sessions:redissession"
@@ -57,7 +58,8 @@ php:
     - "solr:solr"
     - "mysql:mysql"
   volumes:
-    - .:/var/www/html
+    - ./data/www:/var/www/html
+
 mysql:
   image: mysql:5.5
   ports:
@@ -66,14 +68,7 @@ mysql:
     MYSQL_ROOT_PASSWORD: pw
   volumes:
     - ./data/mysql:/var/lib/mysql
-solr:
-  image: andreaskoch/dockerized-magento-solr
-cache:
-  image: redis:latest
-fullpagecache:
-  image: redis:latest
-sessions:
-  image: redis:latest
+
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
   ports:
@@ -83,3 +78,15 @@ phpmyadmin:
   environment:
     PMA_HOST: "mysql"
     PMA_PORT: 3306
+
+solr:
+  image: andreaskoch/dockerized-magento-solr
+
+cache:
+  image: redis:latest
+
+fullpagecache:
+  image: redis:latest
+
+sessions:
+  image: redis:latest

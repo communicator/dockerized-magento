@@ -1,4 +1,4 @@
-# Dockerized - Magento Community Edition 1.9.x
+# Dockerized Magento Community Edition 1.9.x + Communicator Plugin
 
 A dockerized version of "Magento Community Edition 1.9.x"
 

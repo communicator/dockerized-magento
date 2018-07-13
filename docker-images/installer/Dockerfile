@@ -1,6 +1,6 @@
 FROM php:5.6
 
-# Configure PHP
+# Install PHP extension dependencies
 RUN buildDeps=" \
         libpng12-dev \
         libjpeg-dev \
@@ -9,38 +9,48 @@ RUN buildDeps=" \
         freetype* \
     "; \
     set -x \
-    && apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-configure \
-    gd --with-png-dir=/usr --with-jpeg-dir=/usr --with-freetype-dir \
-    && docker-php-ext-install \
+    && apt-get update \
+    && apt-get install -y $buildDeps --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-install \
     gd \
     mbstring \
     mysqli \
     mcrypt \
     mysql \
     pdo_mysql \
-    zip \
+    soap \
+    zip
+
+# Configure GD extension
+RUN docker-php-ext-configure gd \
+    --with-png-dir=/usr \
+    --with-jpeg-dir=/usr \
+    --with-freetype-dir
+
+# Install MySQL
+RUN apt-get update \
+    && apt-get install -qy mysql-client \
     && apt-get purge -y --auto-remove
-
-# Install Tools
-RUN apt-get update && \
-    apt-get install -y \
-    vim \
-    telnet \
-    netcat \
-    git-core \
-    zip && \
-    apt-get purge -y --auto-remove
-
-# Install magerun
-RUN curl -o magerun https://raw.githubusercontent.com/netz98/n98-magerun/master/n98-magerun.phar && \
-    chmod +x ./magerun && \
-    ./magerun selfupdate && \
-    cp ./magerun /usr/local/bin/ && \
-    rm ./magerun && \
-    apt-get update && \
-    apt-get install -qy mysql-client && \
-    apt-get purge -y --auto-remove
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=bin
+
+# Install Git
+RUN apt-get update -qy \
+    && apt-get install -qy git-core \
+    && apt-get purge -y --auto-remove
+
+# Install magerun
+RUN curl -o magerun https://files.magerun.net/n98-magerun.phar \
+    && chmod +x ./magerun \
+    && ./magerun selfupdate \
+    && cp ./magerun /usr/local/bin/ \
+    && rm ./magerun
+
+# Create app directories
+RUN mkdir /var/www \
+    && mkdir /var/www/html \
+    && mkdir /var/www/html/web \
