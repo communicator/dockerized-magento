@@ -57,8 +57,6 @@ php:
     - "fullpagecache:redisfullpagecache"
     - "solr:solr"
     - "mysql:mysql"
-  volumes:
-    - ./data/www:/var/www/html
 
 mysql:
   image: mysql:5.5
