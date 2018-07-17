@@ -6,6 +6,7 @@ RUN buildDeps=" \
         libjpeg-dev \
         libmcrypt-dev \
         libxml2-dev \
+        libfreetype6-dev \
         freetype* \
     "; \
     set -x \
