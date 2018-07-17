@@ -13,16 +13,16 @@ If you are running on [Mac OS](https://docs.docker.com/engine/installation/mac/)
 
 ## Preparations
 
-The web-server will be bound to your local ports 80 and 443. In order to access the shop you must add a hosts file entry for `dockerized-magento.local`.
+The web-server will be bound to your local ports 80 and 443. In order to access the shop you must add a hosts file entry for `magento.communicatorlocal.com`.
 
 ### For Linux Users
 
-In order to access the shop you must add the domain name "dockerized-magento.local" to your hosts file (`/etc/hosts`).
+In order to access the shop you must add the domain name "magento.communicatorlocal.com" to your hosts file (`/etc/hosts`).
 If you are using docker **natively** you can use this command:
 
 ```bash
 sudo su
-echo "127.0.0.1    dockerized-magento.local" >> /etc/hosts
+echo "127.0.0.1    magento.communicatorlocal.com" >> /etc/hosts
 ```
 
 ### For Mac Users
@@ -35,7 +35,7 @@ docker-machine ip <name-of-your-docker-machine>
 ```
 
 ```bash
-echo "192.168.99.100    dockerized-magento.local" >> /etc/hosts
+echo "192.168.99.100    magento.communicatorlocal.com" >> /etc/hosts
 ```
 
 **docker-machine performance**
@@ -86,15 +86,15 @@ Once the installation is finished the installer will print the URL and the crede
 
 ```
 ...
-installer_1      | phpMyAdmin: http://dockerized-magento.local:8080
+installer_1      | phpMyAdmin: http://magento.communicatorlocal.com:8080
 installer_1      |  - Username: root
 installer_1      |  - Password: pw
 installer_1      |
-installer_1      | Backend: http://dockerized-magento.local/admin
+installer_1      | Backend: http://magento.communicatorlocal.com/admin
 installer_1      |  - Username: admin
 installer_1      |  - Password: password123
 installer_1      |
-installer_1      | Frontend: http://dockerized-magento.local/
+installer_1      | Frontend: http://magento.communicatorlocal.com/
 
 ```
 
@@ -164,12 +164,12 @@ If you have started the shop before you must **repeat the installation process**
 
 ### Changing the domain name
 
-I set the default domain name to `dockerized-magento.local`. To change the domain name replace `dockerized-magento.local` with `your-domain.tld` in the `docker-compose.yml` file:
+I set the default domain name to `magento.communicatorlocal.com`. To change the domain name replace `magento.communicatorlocal.com` with `your-domain.tld` in the `docker-compose.yml` file:
 
 ```yaml
 installer:
   environment:
-    DOMAIN: dockerized-magento.local
+    DOMAIN: magento.communicatorlocal.com
 ```
 
 ### Using a different SSL certificate
@@ -186,7 +186,7 @@ If you want to install Magento using your own admin-user or change the password,
 - `ADMIN_LASTNAME`: The last name of the admin user
 - `ADMIN_PASSWORD`: The password for the admin user
 - `ADMIN_EMAIL`: The email address of the admin user (**Note**: Make sure it has a valid syntax. Otherwise Magento will not install.)
-- `ADMIN_FRONTNAME`: The name of the backend route (e.g. `http://dockerized-magento.local/admin`)
+- `ADMIN_FRONTNAME`: The name of the backend route (e.g. `http://magento.communicatorlocal.com/admin`)
 
 ```yaml
 installer:
