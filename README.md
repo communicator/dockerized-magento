@@ -1,75 +1,43 @@
 # Dockerized Magento Community Edition 1.9.x + Communicator Plugin
 
-A dockerized version of "Magento Community Edition 1.9.x"
+A dockerized version of "Magento Community Edition 1.9.x" with the Communicator Magento plugin.
 
 ## Requirements
 
-If you are on Linux you should install
+* [`docker`](https://www.docker.com/get-docker)
+* [`docker-compose`](https://docs.docker.com/compose/)
+* [`git`](https://git-scm.com/)
 
-- [docker](http://docs.docker.com/compose/install/#install-docker) and
-- [docker-compose (formerly known as fig)](http://docs.docker.com/compose/install/#install-compose)
+## Clone
 
-If you are running on [Mac OS](https://docs.docker.com/engine/installation/mac/) or [Windows](https://docs.docker.com/engine/installation/windows/) you can install the [Docker Toolbox](https://docs.docker.com/engine/installation/mac/) which contains docker, docker-compose and docker-machine.
+```bash
+git clone https://github.com/andreaskoch/dockerized-magento.git && cd dockerized-magento
+```
 
 ## Preparations
 
-The web-server will be bound to your local ports 80 and 443. In order to access the shop you must add a hosts file entry for `magento.communicatorlocal.com`.
+The web-server will be bound to your local ports 8080 and 443. In order to access the shop you must add a hosts file entry for `magento.communicatorlocal.com`.
+
+### For Windows Users
+
+Open up a Git Bash prompt and the run the following the fix line ending issues and add the hosts file entry:
+
+```bash
+dos2unix config/installer/bin/*
+echo "127.0.0.1    magento.communicatorlocal.com" >> /etc/hosts
+```
 
 ### For Linux Users
 
-In order to access the shop you must add the domain name "magento.communicatorlocal.com" to your hosts file (`/etc/hosts`).
-If you are using docker **natively** you can use this command:
-
+Open up a Bash shell asand the run the following to add the hosts file entry (as root):
 ```bash
 sudo su
 echo "127.0.0.1    magento.communicatorlocal.com" >> /etc/hosts
 ```
 
-### For Mac Users
 
-If you are using [docker-machine](https://github.com/docker/machine) you need to use the IP address of your virtual machine running docker:
-
-```bash
-docker-machine ls
-docker-machine ip <name-of-your-docker-machine>
-```
-
-```bash
-echo "192.168.99.100    magento.communicatorlocal.com" >> /etc/hosts
-```
-
-**docker-machine performance**
-
-For faster sync between your host system and the docker machine image I recommend that you activate NFS support for virtualbox: [github.com/adlogix/docker-machine-nfs](https://github.com/adlogix/docker-machine-nfs)
-
-```bash
-docker-machine create --driver virtualbox nfsbox
-docker-machine-nfs nfsbox
-```
-
-And to fix issues with filesystem permissions you can modify your NFS exports configuration:
-
-1. open `/etc/exports` and replace `-mapall=$uid:$gid` with `-maproot=0`
-2. `sudo nfsd restart`
-
-Thanks to [René Penner](https://github.com/renepenner/magento-docker-boilerplate) for figuring that out.
-
-### For Windows Users
-
-1. Run `dos2unix config/installer/bin/*` to fix any line ending issues between the Windows and Docker containers caused on `git checkout`.
-2. Open up a `Git Bash` instance
-3. Start the projects using `./magento start` or `docker-compose up`
-
-## Installation
-
-1. Make sure you have docker and docker-compose on your system
-2. Clone the repository
-3. Start the projects using `./magento start` or `docker-compose up`
-
-```bash
-git clone https://github.com/andreaskoch/dockerized-magento.git && cd dockerized-magento
-./magento start
-```
+## Run
+Start the projects using `./magento start` or `docker-compose up`
 
 During the first start of the project **docker-compose** will
 
