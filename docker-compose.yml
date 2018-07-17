@@ -66,8 +66,6 @@ mysql:
     - "3306:3306"
   environment:
     MYSQL_ROOT_PASSWORD: pw
-  volumes:
-    - ./data/mysql:/var/lib/mysql
 
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
