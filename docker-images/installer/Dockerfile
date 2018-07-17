@@ -2,7 +2,7 @@ FROM php:5.6
 
 # Install PHP extension dependencies
 RUN buildDeps=" \
-        libpng12-dev \
+        libpng-dev \
         libjpeg-dev \
         libmcrypt-dev \
         libxml2-dev \
