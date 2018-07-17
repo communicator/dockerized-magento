@@ -16,7 +16,7 @@ git clone https://github.com/andreaskoch/dockerized-magento.git && cd dockerized
 
 ## Preparations
 
-The web-server will be bound to your local ports 8080 and 443. In order to access the shop you must add a hosts file entry for `magento.communicatorlocal.com`.
+The web-server will be bound to your local ports `80` and `443`. In order to access the shop you must add a hosts file entry for `magento.communicatorlocal.com`.
 
 ### For Windows Users
 

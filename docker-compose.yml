@@ -34,8 +34,8 @@ installer:
 nginx:
   image: nginx:latest
   ports:
-    - "8100:80"
-    - "4433:443"
+    - "80:80"
+    - "443:443"
   links:
     - "php"
   volumes:
